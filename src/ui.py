@@ -1,6 +1,7 @@
 from typing import Dict, List
 
 def show_menu() -> str:
+    print()
     print("1. Просмотреть список задач")
     print("2. Добавить задачу")
     print("3. Изменить статус задачи")
@@ -21,13 +22,16 @@ def get_task_input() -> Dict:
 
 def display_tasks(tasks: List[Dict]) -> None:
     if not tasks:
-        print("Список задач пуст\n")
+        print("Список задач пуст")
         return
     print("-----------Список задач-----------")
     for task in tasks:
         print(f"ID: {task['id']}, Название: {task['name']}, Описание: {task['description']}, Статус: {task['status']}")
-    print("----------------------------------\n")
+    print("----------------------------------")
 
+
+def get_task_id() -> int:
+    return int(input("Введите ID задачи\n> "))
 
 def get_task_ids() -> List[int]:
     return [int(id) for id in input("Введите ID задач через пробел\n> ").split()]

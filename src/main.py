@@ -1,4 +1,4 @@
-from ui import show_menu, get_task_input, display_tasks, get_task_ids, get_new_status
+from ui import show_menu, get_task_input, display_tasks, get_task_id, get_task_ids, get_new_status
 from logic import add_task, change_status, edit_task, delete_task, bulk_delete_tasks
 from data import load_tasks, save_tasks
 
@@ -13,17 +13,17 @@ def main():
             add_task(tasks, task_data)
             save_tasks(tasks)
         elif choice == '3':
-            task_id = get_task_ids()
+            task_id = get_task_id()
             new_status = get_new_status()
             change_status(tasks, task_id, new_status)
             save_tasks(tasks)
         elif choice == '4':
-            task_id = get_task_ids()
+            task_id = get_task_id()
             task_data = get_task_input()
             edit_task(tasks, task_id, task_data)
             save_tasks(tasks)
         elif choice == '5':
-            task_id = get_task_ids()
+            task_id = get_task_id()
             delete_task(tasks, task_id)
             save_tasks(tasks)
         elif choice == '6':
