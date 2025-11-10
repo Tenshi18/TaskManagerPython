@@ -3,6 +3,7 @@
 ```mermaid
 graph TB
     User[Пользователь] --> Main[main.py]
+    
     Main --> UC1[Добавить задачу]
     Main --> UC2[Просмотреть список задач]
     Main --> UC3[Изменить статус задачи]
@@ -11,25 +12,36 @@ graph TB
     Main --> UC6[Массовое удаление задач]
     Main --> UC7[Выход из приложения]
     
-    UC1 --> DataModule[Модуль data.py]
-    UC2 --> DataModule
-    UC3 --> DataModule
-    UC4 --> DataModule
-    UC5 --> DataModule
-    UC6 --> DataModule
+    subgraph Modules["Модули приложения"]
+        UIModule[ui.py]
+        LogicModule[logic.py]
+        DataModule[data.py]
+    end
     
-    UC1 --> LogicModule[Модуль logic.py]
-    UC3 --> LogicModule
-    UC4 --> LogicModule
-    UC5 --> LogicModule
-    UC6 --> LogicModule
+    Main --> Modules
     
-    UC1 --> UIModule[Модуль ui.py]
-    UC2 --> UIModule
-    UC3 --> UIModule
-    UC4 --> UIModule
-    UC5 --> UIModule
-    UC6 --> UIModule
+    UC1 -.->|UI| UIModule
+    UC1 -.->|Logic| LogicModule
+    UC1 -.->|Data| DataModule
+    
+    UC2 -.->|UI| UIModule
+    UC2 -.->|Data| DataModule
+    
+    UC3 -.->|UI| UIModule
+    UC3 -.->|Logic| LogicModule
+    UC3 -.->|Data| DataModule
+    
+    UC4 -.->|UI| UIModule
+    UC4 -.->|Logic| LogicModule
+    UC4 -.->|Data| DataModule
+    
+    UC5 -.->|UI| UIModule
+    UC5 -.->|Logic| LogicModule
+    UC5 -.->|Data| DataModule
+    
+    UC6 -.->|UI| UIModule
+    UC6 -.->|Logic| LogicModule
+    UC6 -.->|Data| DataModule
     
     DataModule --> JSONFile[tasks.json]
 ```
